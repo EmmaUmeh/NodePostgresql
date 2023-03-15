@@ -1,15 +1,15 @@
-const {Pool} = require('pg');
+const {Client} = require('pg');
 
-const pool = new Pool({
+const client = new Client({
     host: "localhost",
-    user: "postgres",
-    port: 5432,
-    password: "emmanuel",
-    database: "postgres"
+    user: "postgres", //default PostgreSQL username
+    port: 5432, //default PostgreSQL port number
+    password: "emmanuel", //default PostgreSQL password
+    database: "postgres" 
 })
 
-pool.connect();
-pool.query('SELECT * FROM employee', (err, res) => {
+client.connect(); //connect() connects our database
+client.query('SELECT * FROM employee', (err, res) => {
  
     return(!err) ? console.log(res.rows) : console.log(err.message);
 
